@@ -112,8 +112,7 @@ router.patch('/signin', function (req, res) {
 });
 
 
-router.route('/movies')
-    .get(authController.isAuthenticated, function(req, res) {
+router.get(authController.isAuthenticated, function(req, res) {
             var result;
             if(db.find(req.body.id))
             {
@@ -136,7 +135,7 @@ router.route('/movies')
             res.json(o);
         }
     )
-    .put(authJwtController.isAuthenticated, function(req, res) {
+    .put(authController.isAuthenticated, function(req, res) {
             console.log(req.body);
             res = res.status(200);
             if (req.get('Content-Type')) {
