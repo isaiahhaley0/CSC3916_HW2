@@ -114,13 +114,16 @@ router.patch('/signin', function (req, res) {
 
 router.route('/movies')
     .get(authController.isAuthenticated, function(req, res) {
-            console.log(req.body);
-            res = res.status(200);
-            if (req.get('Content-Type')) {
-                res = res.type(req.get('Content-Type'));
+            var result;
+            if(db.find(req.body.id))
+            {
+                result = req.body.id;
             }
-            var o = getJSONObjectForMovieRequirement(req);
-            res.json(o);
+            else
+            {
+                result = "Not Found"
+            }
+            res.status(200).send({})
         }
     )
     .delete(authController.isAuthenticated, function(req, res) {
