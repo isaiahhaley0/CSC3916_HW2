@@ -124,9 +124,18 @@ router.route('/movies')
     var o = getJSONObjectForMovieRequirement(req);
     res.json(o);
     })
-    .delete(authController.isAuthenticated, function(req, res) {
+    .post(function (req,res){
         console.log(req.body);
-        res = res.status(200);
+        res = res.status(200).send({success:true,msg:'saved'});
+        if(req.get('Content-Type')){
+            res = res.type(req.get("Content-Type"));
+        }
+        var o = getJSONObjectForMovieRequirement(req);
+        res.json(o);
+    })
+    .put(authController.isAuthenticated, function(req, res) {
+        console.log(req.body);
+        res = res.status(200).send({success:true,msg:'saved'});
         if (req.get('Content-Type')) {
             res = res.type(req.get('Content-Type'));
         }
@@ -134,15 +143,15 @@ router.route('/movies')
         res.json(o);
     }
     )
-    .put(authJwtController.isAuthenticated, function(req, res) {
-        console.log(req.body);
-        res = res.status(200);
-        if (req.get('Content-Type')) {
-            res = res.type(req.get('Content-Type'));
+    .delete(authController.isAuthenticated, function(req, res) {
+            console.log(req.body);
+            res = res.status(200).send({success:true,msg:'deleted'});
+            if (req.get('Content-Type')) {
+                res = res.type(req.get('Content-Type'));
+            }
+            var o = getJSONObjectForMovieRequirement(req);
+            res.json(o);
         }
-        var o = getJSONObjectForMovieRequirement(req);
-        res.json(o);
-    }
     );
 
 app.use('/', router);
