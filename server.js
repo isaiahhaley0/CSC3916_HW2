@@ -143,7 +143,7 @@ router.route('/movies')
         res.json(o);
     }
     )
-    .delete(authController.isAuthenticated, function(req, res) {
+    .delete(authJwtController.isAuthenticated, function(req, res) {
             console.log(req.body);
             res = res.status(200).send({success:true,msg:'deleted'});
             if (req.get('Content-Type')) {
