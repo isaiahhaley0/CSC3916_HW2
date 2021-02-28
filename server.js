@@ -90,6 +90,26 @@ router.post('/signin', function (req, res) {
         }
     }
 });
+router.get('/signin', function (req, res) {
+
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
+router.put('/signin', function (req, res) {
+
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
+router.delete('/signin', function (req, res) {
+
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
+router.patch('/signin', function (req, res) {
+
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
 
 router.route('/testcollection')
     .delete(authController.isAuthenticated, function(req, res) {
