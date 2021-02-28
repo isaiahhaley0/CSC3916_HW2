@@ -123,7 +123,7 @@ router.route('/movies')
             {
                 result = "Not Found"
             }
-            res.status(200).send({})
+            res.status(200).send({msg:'Get Movies', headers: req.headers, query:result, env: process.env.UNIQUE_KEY})
         }
     )
     .delete(authController.isAuthenticated, function(req, res) {
