@@ -54,6 +54,25 @@ router.post('/signup', function(req, res) {
         res.json({success: true, msg: 'Successfully created new user.'})
     }
 });
+router.get('/signup', function(req, res) {
+        res.json({success: false, msg: 'Method Not Supported'})
+
+});
+router.put('/signup', function(req, res) {
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
+
+router.delete('/signup', function(req, res) {
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
+
+
+router.patch('/signup', function(req, res) {
+    res.json({success: false, msg: 'Method Not Supported'})
+
+});
 
 router.post('/signin', function (req, res) {
     var user = db.findOne(req.body.username);
