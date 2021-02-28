@@ -112,7 +112,8 @@ router.patch('/signin', function (req, res) {
 });
 
 
-router.get(authController.isAuthenticated, function(req, res) {
+router.route('/movies')
+    .get(authController.isAuthenticated, function(req, res) {
             var result;
             if(db.find(req.body.id))
             {
