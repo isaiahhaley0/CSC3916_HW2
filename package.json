@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shawnmccarthy/CSC3916_HW2.git"
+    "url": "git+https://github.com/isaiahhaley0/CSC3916_HW2.git"
   },
   "keywords": [
     "Movie"
   ],
-  "author": "Shawn McCarthy",
+  "author": "Isaiah Haley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shawnmccarthy/CSC3916_HW2/issues"
+    "url": "https://github.com/isaiahhaley0/CSC3916_HW2/issues"
   },
-  "homepage": "https://github.com/shawnmccarthy/CSC3916_HW2#readme",
+  "homepage": "https://github.com/isaiahhaley0/CSC3916_HW2#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
