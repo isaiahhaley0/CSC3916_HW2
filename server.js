@@ -112,43 +112,38 @@ router.patch('/signin', function (req, res) {
 });
 
 
+
+
 router.route('/movies')
-    .get(authController.isAuthenticated, function(req, res) {
-            var result;
-            if(db.find(req.body.id))
-            {
-                result = req.body.id;
-            }
-            else
-            {
-                result = "Not Found"
-            }
-            res.status(200).send({msg:'Get Movies', headers: req.headers, query:result, env: process.env.UNIQUE_KEY})
-        }
-    )
+    .get(function (req,res){
+    console.log(req.body);
+    res = res.status(200).send({success:true,msg:'GET movies'});
+    if(req.get('Content-Type')){
+        res = res.type(req.get("Content-Type"));
+    }
+    var o = getJSONObjectForMovieRequirement(req);
+    res.json(o);
+    })
     .delete(authController.isAuthenticated, function(req, res) {
-            console.log(req.body);
-            res = res.status(200);
-            if (req.get('Content-Type')) {
-                res = res.type(req.get('Content-Type'));
-            }
-            var o = getJSONObjectForMovieRequirement(req);
-            res.json(o);
+        console.log(req.body);
+        res = res.status(200);
+        if (req.get('Content-Type')) {
+            res = res.type(req.get('Content-Type'));
         }
+        var o = getJSONObjectForMovieRequirement(req);
+        res.json(o);
+    }
     )
-    .put(authController.isAuthenticated, function(req, res) {
-            console.log(req.body);
-            res = res.status(200);
-            if (req.get('Content-Type')) {
-                res = res.type(req.get('Content-Type'));
-            }
-            var o = getJSONObjectForMovieRequirement(req);
-            res.json(o);
+    .put(authJwtController.isAuthenticated, function(req, res) {
+        console.log(req.body);
+        res = res.status(200);
+        if (req.get('Content-Type')) {
+            res = res.type(req.get('Content-Type'));
         }
+        var o = getJSONObjectForMovieRequirement(req);
+        res.json(o);
+    }
     );
-
-
- 
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
