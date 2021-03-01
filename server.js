@@ -135,7 +135,7 @@ router.route('/movies')
     })
     .put(authController.isAuthenticated, function(req, res) {
         console.log(req.body);
-        res = res.status(200).send({success:true,msg:'saved'});
+        res = res.status(200).send({success:true,msg:'updated'});
         if (req.get('Content-Type')) {
             res = res.type(req.get('Content-Type'));
         }
